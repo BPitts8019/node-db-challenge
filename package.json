@@ -4,7 +4,7 @@
    "description": "Lambda School Sprint Challenge",
    "main": "index.js",
    "scripts": {
-      "server": "nodemon index.js"
+      "server": "nodemon -r dotenv/config index.js"
    },
    "repository": {
       "type": "git",
