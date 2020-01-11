@@ -34,22 +34,27 @@ exports.up = async function(knex) {
          .defaultTo(0);
    });
    await knex.schema.createTable(PROJECTS_RESOURCES, table => {
-      table.integer("project_id")
+      const PROJECT_ID = "project_id";
+      const RESOURCE_ID = "resource_id";
+
+      table.integer(PROJECT_ID)
          .unsigned()
          .notNullable()
          .references("id").inTable(PROJECTS)
          .onDelete("CASCADE")
          .onUpdate("CASCADE");
-      table.integer("resource_id")
+      table.integer(RESOURCE_ID)
          .unsigned()
          .notNullable()
          .references("id").inTable(RESOURCES)
          .onDelete("CASCADE")
          .onUpdate("CASCADE");
+      table.primary([PROJECT_ID, RESOURCE_ID]);
    });
 };
 
 exports.down = async function(knex) {
+   await knex.schema.dropTableIfExists(PROJECTS_RESOURCES);
    await knex.schema.dropTableIfExists(TASKS);
    await knex.schema.dropTableIfExists(RESOURCES);
    await knex.schema.dropTableIfExists(PROJECTS);
