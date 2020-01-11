@@ -38,21 +38,21 @@ Commit your code regularly and use descriptive messages. This helps both you (in
 
 Demonstrate your understanding of this week's concepts by answering the following free-form questions. Edit this document to include your answers after each question. Make sure to leave a blank line above and below your answer so it is clear and easy to read by your project manager.
 
-[x] Explain the difference between `Relational Databases` and `SQL`.
+- [x] Explain the difference between `Relational Databases` and `SQL`.
 
 >A Relational Database is a database that stores its data as a series of rows and columns called tables. A row in a table represents one record of data. A column represents one piece or field of data common to all records.
 >
 >SQL means Structured Query Language. It is a standard languange used to interact with a database. While there are other query languages, this one is the most commonly used.
 
-[x] Why do tables need a `primary key`?
+- [x] Why do tables need a `primary key`?
 
 >A primary key is used to identify individual records within a table. Without a a way to identify a specific record, query operations simply wouldn't work.
 
-[x] What is the name given to a table column that references the primary key on another table.
+- [x] What is the name given to a table column that references the primary key on another table.
 
 > Foreign Key
 
-[x] What do we need in order to have a _many to many_ relationship between two tables.
+- [x] What do we need in order to have a _many to many_ relationship between two tables.
 
 >  We need to create an intermediary table that will hold the relationships between the two tables. This table can also contain meta data about that each relationship. The unique identifier (primary key) in each record of these tables is the combination of Foreign Keys within the modeled relationship.
 
@@ -62,7 +62,7 @@ Take the steps necessary to complete the project from scratch. Start by initiali
 
 Complete the following tasks:
 
-- [ ] Design the data model and use _knex migrations_ to create the database and tables.
+- [x] Design the data model and use _knex migrations_ to create the database and tables.
 - [ ] Build an API with endpoints for:
   - [ ] adding resources.
   - [ ] retrieving a list of resources.
