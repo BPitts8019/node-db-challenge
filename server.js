@@ -1,6 +1,6 @@
 const express = require("express");
 const helmet = require("helmet");
-const projectsListRouter = require("./projects-list/projects-list-router");
+const projectsRouter = require("./projects/projects-router");
 const server = express();
 
 server.use(helmet());
@@ -12,7 +12,7 @@ server.get("/", (req, res) => {
    });
 });
 
-server.use("/api/projects", projectsListRouter);
+server.use("/api/projects", projectsRouter);
 
 //404 Page not found
 server.use((req, res) => {
@@ -28,3 +28,5 @@ server.use((error, req, res, next) => {
       data: error.toString()
    });
 });
+
+module.exports = server;
