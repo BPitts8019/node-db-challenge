@@ -22,7 +22,8 @@ const find = async () => {
 const findByID = async project_id => {
    try {
       const project = await db(PROJECTS)
-         .where({id: project_id});
+         .where({id: project_id})
+         .first();
       
       return Promise.resolve({
          ...project,
