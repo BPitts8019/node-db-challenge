@@ -6,12 +6,14 @@ const find = async () => {
    try {
       const projects = await db(PROJECTS);
    
-      return projects.map(project => {
-         return Promise.resolve({
-            ...project, 
-            completed: !!project.completed
-         });
-      });
+      return Promise.resolve(
+         projects.map(project => {
+            return {
+               ...project, 
+               completed: !!project.completed
+            };
+         })
+      );
    } catch (error) {
       return Promise.reject(error);
    }
