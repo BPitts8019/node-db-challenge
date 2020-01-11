@@ -36,7 +36,7 @@ const findByID = async project_id => {
 
 const add = async newProject => {
    try {
-      const [id] = db(PROJECTS).insert(newProject);
+      const [id] = await db(PROJECTS).insert(newProject);
       return findByID(id);
    }  catch (error) {
       return Promise.reject(error);
