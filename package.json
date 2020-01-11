@@ -1,0 +1,19 @@
+{
+   "name": "node-db-sprint",
+   "version": "1.0.0",
+   "description": "Lambda School Sprint Challenge",
+   "main": "index.js",
+   "scripts": {
+      "server": "nodemon index.js"
+   },
+   "repository": {
+      "type": "git",
+      "url": "git+https://github.com/LambdaSchool/node-db-challenge.git"
+   },
+   "author": "Bradley Pitts",
+   "license": "ISC",
+   "bugs": {
+      "url": "https://github.com/LambdaSchool/node-db-challenge/issues"
+   },
+   "homepage": "https://github.com/LambdaSchool/node-db-challenge#readme"
+}
