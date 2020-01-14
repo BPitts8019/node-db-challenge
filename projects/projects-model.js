@@ -1,19 +1,21 @@
 const db = require("../data/db-config");
 const PROJECTS = "projects";
 
-//functions
+const completedToBoolean = project => {
+   return {
+      ...project, 
+      completed: !!project.completed
+   };
+};
 const find = async () => {
    try {
-      const projects = await db(PROJECTS);
+      let projects = await db(PROJECTS);
    
-      return Promise.resolve(
-         projects.map(project => {
-            return {
-               ...project, 
-               completed: !!project.completed
-            };
-         })
-      );
+      if (projects.length >= 0) {
+         projects = projects.map(completedToBoolean);
+      }
+
+      return Promise.resolve(projects);
    } catch (error) {
       return Promise.reject(error);
    }
@@ -25,10 +27,11 @@ const findByID = async project_id => {
          .where({id: project_id})
          .first();
       
-      return Promise.resolve({
-         ...project,
-         completed: !!project.completed
-      });
+      if (!project) {
+         return Promise.reject(new Error("No project with that ID"));
+      }
+
+      return Promise.resolve(completedToBoolean(project));
    }  catch (error) {
       return Promise.reject(error);
    }

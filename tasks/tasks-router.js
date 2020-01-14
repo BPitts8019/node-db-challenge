@@ -14,11 +14,18 @@ const validateTask = async (req, res, next) => {
       return res.status(400).json({message: "The project ID must be an integer value."});
    }
 
-   const project = await projectsDB.findByID(req.body.project_id);
-   if (!project) {
-      return res.status(400).json({message: `No project found with ID: ${req.body.project_id}`});
+   try {
+      const project = await projectsDB.findByID(req.body.project_id);
+      if (!project) {
+         return res.status(400).json({message: `No project found with ID: ${req.body.project_id}`});
+      }
+      taskData.project_id = req.body.project_id;
+   } catch (error) {
+      console.error("Trouble finding the project");
+      return res.status(500).json({
+         data: error.toString()
+      });
    }
-   taskData.project_id = req.body.project_id;
 
    if (!req.body.description || typeof req.body.description !== "string") {
       return res.status(400).json({message: "Please provide a description for the task."});
