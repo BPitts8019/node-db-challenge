@@ -3,8 +3,15 @@ const TASKS = "tasks";
 
 //functions
 const find = async () => {
+   const P = "projects";
+   const T = TASKS;
+
    try {
-      const tasks = await db(TASKS);
+      const tasks = await db
+         .select(`${T}.*`, `${P}.name as project_name`, `${P}.description as project_desc`)
+         .from(T)
+         .join(P, `${P}.id`, `${T}.project_id`)
+         .orderBy(`${T}.project_id`);
    
       return Promise.resolve(
          tasks.map(task => {
