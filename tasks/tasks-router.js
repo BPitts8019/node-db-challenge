@@ -1,11 +1,17 @@
-const projectsDB = require("./projects-model");
+const router = require("express").Router();
+const projectsDB = require("../projects/projects-model");
 const tasksDB = require("./tasks-model");
 
 const validateTask = async (req, res, next) => {
    let taskData = {};
 
-   if (!req.body.project_id || typeof req.body.project_id !== "number" || !Number.isInteger(req.body.project_id)) {
+   if (!req.body.project_id) {
       return res.status(400).json({message: "Please provide a project ID for the task."});
+   }
+
+   if (typeof req.body.project_id !== "number" || !Number.isInteger(req.body.project_id))
+   {
+      return res.status(400).json({message: "The project ID must be an integer value."});
    }
 
    const project = await projectsDB.findByID(req.body.project_id);
@@ -17,7 +23,7 @@ const validateTask = async (req, res, next) => {
    if (!req.body.description || typeof req.body.description !== "string") {
       return res.status(400).json({message: "Please provide a description for the task."});
    }
-   taskData.name = req.body.description;
+   taskData.description = req.body.description;
 
 
    //extra fields

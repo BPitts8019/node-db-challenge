@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const tasksRouter = require("../tasks/tasks-router");
+// const tasksRouter = require("../tasks/tasks-router");
 const projectsDB = require("./projects-model");
 
 const validateProject = (req, res, next) => {
@@ -61,6 +61,6 @@ router.post("/", validateProject, async (req, res, next) => {
 //    }
 // });
 
-router.use("/:id/tasks", tasksRouter);
+// router.use("/:id/tasks", tasksRouter);
 
 module.exports = router;

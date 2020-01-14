@@ -1,6 +1,7 @@
 const express = require("express");
 const helmet = require("helmet");
 const projectsRouter = require("./projects/projects-router");
+const tasksRouter = require("./tasks/tasks-router");
 const server = express();
 
 server.use(helmet());
@@ -13,7 +14,7 @@ server.get("/", (req, res) => {
 });
 
 server.use("/api/projects", projectsRouter);
-server.use("api/tasks", );
+server.use("/api/tasks", tasksRouter);
 
 //404 Page not found
 server.use((req, res) => {
