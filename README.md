@@ -65,7 +65,7 @@ Complete the following tasks:
 - [x] Design the data model and use _knex migrations_ to create the database and tables.
 - [ ] Build an API with endpoints for:
   - [ ] adding resources.
-  - [ ] retrieving a list of resources.
+  - [x] retrieving a list of resources.
   - [x] adding projects.
   - [x] retrieving a list of projects.
   - [x] adding tasks.
