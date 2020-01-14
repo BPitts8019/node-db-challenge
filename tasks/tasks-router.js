@@ -59,7 +59,7 @@ router.get("/", async (req, res, next) => {
 router.post("/", validateTask, async (req, res, next) => {
    try {
       const newTask = await tasksDB.add(req.payload);
-      res.json(newTask);
+      res.status(201).json(newTask);
    } catch (error) {
       next(error);
    }

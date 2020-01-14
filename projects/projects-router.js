@@ -46,7 +46,7 @@ router.get("/", async (req, res, next) => {
 router.post("/", validateProject, async (req, res, next) => {
    try {
       const newProject = await projectsDB.add(req.payload);
-      res.json(newProject);
+      res.status(201).json(newProject);
    } catch (error) {
       next(error);
    }
