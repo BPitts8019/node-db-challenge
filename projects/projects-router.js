@@ -16,7 +16,7 @@ const validateProject = (req, res, next) => {
    //extra fields
    if (req.body.description) {
       if (typeof req.body.description !== "string") {
-         return res.status(400).json({message: "The description  must be a string value."})
+         return res.status(400).json({message: "The description must be a string value."})
       }
 
       projectData.description = req.body.description;
@@ -24,7 +24,7 @@ const validateProject = (req, res, next) => {
 
    if (req.body.completed) {
       if (typeof req.body.completed !== "boolean") {
-         return res.status(400).json({message: "The completed field  must be true or false."})
+         return res.status(400).json({message: "The completed field must be true or false."})
       }
 
       projectData.completed = Number(req.body.completed);
@@ -52,14 +52,14 @@ router.post("/", validateProject, async (req, res, next) => {
    }
 });
 
-router.get("/:id", async (req, res, next) => {
-   try {
-      const project = await projectsDB.findByID(req.params.id);
-      res.json(project);
-   } catch (error) {
-      next(error);
-   }
-});
+// router.get("/:id", async (req, res, next) => {
+//    try {
+//       const project = await projectsDB.findByID(req.params.id);
+//       res.json(project);
+//    } catch (error) {
+//       next(error);
+//    }
+// });
 
 router.use("/:id/tasks", tasksRouter);
 

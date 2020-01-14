@@ -13,6 +13,7 @@ server.get("/", (req, res) => {
 });
 
 server.use("/api/projects", projectsRouter);
+server.use("api/tasks", );
 
 //404 Page not found
 server.use((req, res) => {
